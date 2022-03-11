@@ -1,0 +1,43 @@
+---
+name: AWS EKS 镜像更新
+sign: aws_eks_update_image
+description: AWS EKS 镜像更新
+image: chenlmdocker/aws_eks_update_image_flow:latest
+items:
+  - label: EKS 集群名称
+    name: AWS_EKS_NAME
+    type: input 
+    description: EKS 集群名称
+  - label: EKS 命名空间 
+    name: AWS_EKS_NAMESPACE
+    type: input 
+    value: default 
+
+    description: EKS 命名空间 
+  - label: Workloads 类型
+    name: AWS_EKS_WORKLOADS_TYPE
+    type: select 
+    value: Deployment 
+    datasource:
+      - label: Deployment
+        value: Deployment
+      - label: StatefulSet 
+        value: StatefulSet
+      - label: DaemonSet
+        value: DaemonSet
+      - label: CronJob
+        value: CronJob
+    description: 选择你要升级的Workloads（工作负载）类型
+  - label: Workloads 名称
+    name: AWS_EKS_WORKLOADS_NAME
+    type: input 
+    description: 选择你要升级的Workloads（工作负载）名称
+  - label: 容器名称
+    name: AWS_EKS_CONTAINER_NAME
+    type: input 
+    description: Kubernetes中一个Pod可能包含多个容器，这里需要指定升级的容器名称
+  - label: 镜像
+    name: DOCKER_IMAGE_URL
+    type: upstream_component_output
+    autoComplete: true
+    input_type: artifacts

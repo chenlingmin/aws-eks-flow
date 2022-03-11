@@ -1,0 +1,37 @@
+---
+name: 镜像构建并推送至 AWS 镜像仓库
+sign: aws_ecr_push
+description: 镜像构建并推送至 AWS 镜像仓库
+image: chenlmdocker/aws_ecr_push_flow:latest
+items:
+  - label: 镜像名称 
+    name: DOCKER_IMAGE_NAME
+    type: input 
+  
+  - label: Dockerfile路径
+    name: DOCKERFILE
+    type: input 
+    value: Dockerfile
+    description: Dockerfile路径为Dockerfile相对于代码库根目录所在路径，如META/config/Dockerfile或Dockerfile
+  
+  - label: ContextPath
+    name: CONTEXT_PATH
+    type: input 
+    rules:
+    - required: false
+    description: ContextPath为Docker构建的执行上下文。填写相对于代码根目录的路径，如target，如果不填则为Dockerfile文件所在目录
+  # - label: 制品名称
+  #   name: DOCKER_IMAGE_URL
+  #   export_to_output:
+  #     type: artifact
+  #     description: 自定义产出物名称，定义后在部署组件使用
+  #     alias: 制品
+  #     dynamicName: name
+  #   type: input
+  #   description: 制品名称为当前构建产物的名称。用于区分多次构建产生的不同产出物，定义后在部署组件使用。例如"default"
+
+dynamicOutputs:
+- label: 镜像名称
+  label_en_US: Public Image
+  type: artifact
+  value: DOCKER_IMAGE_URL
