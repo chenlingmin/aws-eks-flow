@@ -34,7 +34,7 @@
 
 * `AWS_ACCESS_KEY_ID` 即 AWS 中的 `ACCESS_KEY_ID`
 * `AWS_SECRET_ACCESS_KEY` 即 AWS 中的 `SECRET_ACCESS_KEY`
-* `WS_REGION` 为 AWS 所在的区域
+* `AWS_REGION` 为 AWS 所在的区域
 
 ![](./.img/AWS环境变量.png)
 ### 镜像构建并推送至 AWS 镜像仓库
